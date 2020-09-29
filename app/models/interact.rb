@@ -2,6 +2,7 @@ class Interact
     attr_accessor :over
     def initialize
         @over = 0
+        system "clear"
     end
 
 
@@ -17,9 +18,12 @@ class Interact
             self.search_games
         elsif input == "2"
             self.see_deals
-        elsif input == "Break Out" 
-            BreakOut.new_game
-        elsif input == "3" | input =="exit"
+        elsif input == "break out" 
+            game = TextAdventure.new
+            while game.over == 0
+            game.start
+            end
+        elsif input == "3" || input =="exit"
             @over = 1
         end
     end
@@ -44,8 +48,7 @@ class Interact
             input = gets.chomp
             if input == "back"
                 choice = -2
-            end
-            if input.to_i != 0
+            elsif input.to_i != 0
                 choice = input.to_i
             end
             if choice > 0 and choice <= results_array[-1][0]
@@ -65,3 +68,4 @@ class Interact
     end
 end
             
+
