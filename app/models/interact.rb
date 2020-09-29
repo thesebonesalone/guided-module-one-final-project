@@ -64,7 +64,7 @@ class Interact
     end
     def see_deals
         puts "These games are heavily discounted at these stores!"
-        #Insert Hector's methods here
+        Game.returns_top_10_discounted_games
     end
 end
             
