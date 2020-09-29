@@ -1,7 +1,10 @@
-require_relative '..config/environment'
+require_relative '../config/environment.rb'
 require "faker"
 require "pry"
 
-binding.pry
+run = Interact.new
+while run.over == 0 do
+    run.options
 
-0
+end
+exit

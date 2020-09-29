@@ -10,6 +10,6 @@ end
 end
 Store.all.each do |store|
     Game.all.each do |game|
-        Listing.create(store: store, game: game, price: game.msrp - rand(5))
+        Listing.create(store_id: store.id, game_id: game.id, price: game.msrp - rand(5))
     end
 end
