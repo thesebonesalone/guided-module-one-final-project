@@ -1,6 +1,8 @@
 class Game < ActiveRecord::Base
     has_many :listings
     has_many :stores, through: :listings
+    has_many :users, through: :wlists
+    has_many :wlists
 
     def self.return_all_games_with_n(name)
             Game.where("name LIKE ?", "%#{name}%")
