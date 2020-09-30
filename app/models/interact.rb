@@ -29,9 +29,9 @@ class Interact
     end
 
     def search_database_by_name(name)
+        #Uses the RAWG database to find game info and then stores it to the games table
         response_string = RestClient.get("https://api.rawg.io/api/games?search=#{name}", headers = { "X-RapidAPI-Host" => "rawg-video-games-database.p.rapidapi.com", "X-RapidAPI-Key" => "a0fad62b23msh9f87cff95ae8856p1989eajsn8dfd7ce35f92"})
         results = JSON.parse(response_string)["results"]
-
         #binding.pry
         results_array = results.map {|v| v["name"]}
         return_array = []
@@ -44,7 +44,6 @@ class Interact
             end
         end
         return_array
-        
     end
 
 
@@ -55,14 +54,7 @@ class Interact
         search_string = gets.chomp
         puts "Searching the stars for a deal..."
         search_array = search_database_by_name(search_string)
-
-
-
-
-
-
-
-        #search_array = Game.return_all_games_with_n(search_string)
+        
         results_array = []
         count = 1
         #builds an array that can be used via numeric selection
