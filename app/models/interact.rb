@@ -174,17 +174,21 @@ class Interact
             count += 1
         end
         good = false
-        while good == false
-            good = true
-            puts "please select game to view or type back"
-            input = gets.chomp
-            if input.to_i > 0 && input.to_i <= count
-                #binding.pry
-                self.wishlist_highlight(wish_array[input.to_i - 1].game,wish_array[input.to_i - 1])
-                
-            elsif input != "back"
-                good = false
+        if wish_array != []
+            while good == false
+                good = true
+                puts "please select game to view or type back"
+                input = gets.chomp
+                if input.to_i > 0 && input.to_i <= count
+                    #binding.pry
+                    self.wishlist_highlight(wish_array[input.to_i - 1].game,wish_array[input.to_i - 1])
+                    
+                elsif input != "back"
+                    good = false
+                end
             end
+        else
+            puts "You have no games in your wishlist. Get some dreams then come back to us!"
         end
     end
 
@@ -282,9 +286,11 @@ class Interact
         end
         #prompts player for their choice via numeric selection
         choice = -1
-        while choice == -1 do
+        good = false
+        while good == false do
+            good = true
             system "clear"
-            puts "Please make a choice, or type back."
+            puts "Please make a choice, #{@user.username}!"
             results_array.each {|result| puts "#{result[0]}. #{result[1].name}"}
             if results_array == []
                 puts "Nothing here but us Chickens."
@@ -303,6 +309,7 @@ class Interact
             else
                 puts "Please make a valid choice."
                 choice = -1
+                good = false
             end
         end
         game.parse_listings.each {|value| puts value}
