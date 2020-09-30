@@ -9,3 +9,5 @@ gem 'rails', '~>5.0.7.1'
 gem "sinatra-activerecord"
 gem 'sqlite3', '~>1.3.6'
 gem 'faker'
+gem 'rest-client'
+gem 'json'

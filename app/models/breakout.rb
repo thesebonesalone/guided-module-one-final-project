@@ -56,7 +56,7 @@ class TextAdventure
         self.hud
         input = self.choose("While running away you see a large loaf of bread. It's the good stuff too, you can't imagine how it got here.", ["Eat the bread","Keep fleeing","Face your assailant"])
         if input == 1
-            puts "You somehow consume the entire loaf in a single bit. You feel energized, and ready to face your foes!"
+            puts "You somehow consume the entire loaf in a single bite. You feel energized, and ready to face your foes!"
             @hp += 10
             @demeanor = "Relatively Buff"
             sleep 3
@@ -74,7 +74,7 @@ class TextAdventure
         @location = "In the clutches of the beast"
         self.hud
         input = self.choose("Despite your best efforts the man is gaining on you. You have come to a crossroads in your destiny. Either you face your fears, or attempt to outrun the inevitable.", ["Flee, with gusto","Face your assailant!"])
-        if input == 1 && @hp > 5
+        if input == 2 && @hp > 5
                 puts "The man is no match for your wrath, empowered by really excellent bread you smite your foe against the lakeside. You, #{@name} the goose, have won. But at what cost?"
                 self.game_over
             else
