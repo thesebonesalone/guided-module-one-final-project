@@ -72,16 +72,23 @@ class Interact
         system "clear"
         puts "Please Enter Username:"
         name = gets.chomp
-        current_user = User.where("username = ?",name)[0]
+        current_user = User.where("username = ?",name.downcase)
 
         #binding.pry
         if current_user == []
             puts "This user does not exist. Either create a new user or try a different name."
         else
-            puts "Please Enter Password:"
-            pass = gets.chomp
-            if pass == current_user.password
-                @user = current_user
+            pass = nil
+            while pass != current_user[0].password && pass != "back"
+                puts "Please Enter Password or type back:"
+                pass = gets.chomp
+                if pass == current_user[0].password
+                    @user = current_user[0]
+                elsif pass == "forgot password"
+                    puts "Ok, this is a CLI app. Lower your expectations."
+                else
+                    puts "Incorrect password!"
+                end
             end
         end
     end
@@ -89,7 +96,7 @@ class Interact
     def create_new_user_and_password
         system "clear"
         puts "Please Enter a Username:"
-        name = gets.chomp
+        name = gets.chomp.downcase
         password = ""
         password_check = "1"
         while password != password_check
@@ -116,7 +123,35 @@ class Interact
 
 
     def options
-        puts "Hello, #{@user.username}!"
+        if @user.username == "commander shepard"
+            puts "You are Commander Shepard and this is your favorite app on the citadel"
+        elsif @user.username == "obi wan" || @user.username == "obi-wan" || @user.username == "obi-wan kenobi" || @user.username == "obi wan kenobi"
+            puts "Now that is name I've not heard in a long time."
+        elsif @user.username == "batman" || @user.username == "christian bale" || @user.username == "val kilmer" || @user.username == "robert pattinson" || @user.username == "adam west" || @user.username == "george clooney" || @user.username == "michael keaton"
+            puts "You're Batman!"
+        elsif @user.username == "robert downey jr"
+            puts "You. Are. Iron Man"
+        elsif @user.username == "thanos"
+            puts "Now this does bring a smile to my face."
+        elsif @user.username == "palpatine"
+            puts "UNLIMITED POWERRRRRRRRR!!!!!!"
+        elsif @user.username == "ilsa lund"
+            puts "Of all the Gin joints in all the towns in all the world..."
+        elsif @user.username == "ted cruz"
+            puts "Hello, the Zodiac Killer"
+        elsif @user.username == "james bond" || @user.username == "sean connery" || @user.username == "david niven" || @user.username == "george lazenby" || @user.username == "roger moore" || @user.username == "timothy dalton" || @user.username == "pierce brosnan" || @user.username == "daniel craig" || @user.username == "idris elba"
+            puts "Ah, hello 007."
+        elsif @user.username == "bojack horseman"
+            puts "Aren't you that horse from Horsin' Around?"
+        elsif @user.username == "william hartnell" || @user.username == "patrick troughton" || @user.username == "jon pertwee" || @user.username == "tom baker" || @user.username == "peter davison" || @user.username == "colin baker" || @user.username == "sylvester mccoy" || @user.username == "paul mcgann" || @user.username == "christopher eccleston" || @user.username == "david tennant" || @user.username == "matt smith" || @user.username == "peter capaldi" || @user.username == "jodie whittaker"
+            puts "Is this app bigger on the inside or something?"
+        elsif @user.username == "mclovin"
+            puts "You only have one name?"
+        elsif @user.username == "Will"
+            puts "Are you me?"
+        else
+            puts "Hello, #{@user.username}!"
+        end
         puts "Please choose an option:"
         puts "1. Search Games"
         puts "2. See Deals"

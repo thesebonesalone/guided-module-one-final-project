@@ -25,7 +25,7 @@ class Game < ActiveRecord::Base
                 break if count > top_ten.length
             end
         else
-            puts "The game list is unpopulated! Seach some games and come back!"
+            puts "The game list is unpopulated! Search some games and come back!"
         end
     end 
         

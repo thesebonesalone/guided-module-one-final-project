@@ -10,6 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20200930182350) do
+
+  create_table "games", force: :cascade do |t|
+    t.string "name"
+    t.float  "msrp"
+  end
+
+  create_table "listings", force: :cascade do |t|
+    t.integer "game_id"
+    t.integer "store_id"
+    t.float   "price"
+    t.index ["game_id"], name: "index_listings_on_game_id"
+    t.index ["store_id"], name: "index_listings_on_store_id"
+  end
+
+  create_table "stores", force: :cascade do |t|
+    t.string "name"
+    t.string "location"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "password"
+  end
+
+  create_table "wlists", force: :cascade do |t|
+    t.integer "game_id"
+    t.integer "user_id"
+    t.index ["game_id"], name: "index_wlists_on_game_id"
+    t.index ["user_id"], name: "index_wlists_on_user_id"
+  end
 
 end
