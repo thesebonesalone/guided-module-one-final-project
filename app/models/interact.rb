@@ -50,6 +50,8 @@ class Interact
         puts "1. Login"
         puts "2. Create New User"
         puts "3. Exit"
+        #binding.pry
+
         input = gets.chomp
         if input == "3" || input == "exit"
             exit
@@ -85,7 +87,11 @@ class Interact
                 if pass == current_user[0].password
                     @user = current_user[0]
                 elsif pass == "forgot password"
+                    system "clear"
+                    sleep (1)
                     puts "Ok, this is a CLI app. Lower your expectations."
+                    sleep(2)
+                    system "clear"
                 else
                     puts "Incorrect password!"
                 end

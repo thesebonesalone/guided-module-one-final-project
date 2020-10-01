@@ -9,6 +9,7 @@ class CreateListingTable < ActiveRecord::Migration[5.0]
 end
 
 
+
 # top_ten = Listing.all.sort_by do |listing|
 #   listing.price / listing.game.msrp
 # end
